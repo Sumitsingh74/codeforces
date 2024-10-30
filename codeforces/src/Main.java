@@ -6,11 +6,11 @@
 
 //import java.lang.classfile.attribute.InnerClassesAttribute;
 
-import javax.management.MBeanServerDelegateMBean;
-import javax.print.DocFlavor;
-import javax.print.attribute.standard.Finishings;
-import javax.swing.*;
-import javax.swing.plaf.RootPaneUI;
+//import javax.management.MBeanServerDelegateMBean;
+//import javax.print.DocFlavor;
+//import javax.print.attribute.standard.Finishings;
+//import javax.swing.*;
+//import javax.swing.plaf.RootPaneUI;
 import java.util.*;
 import java.lang.*;
 import java.util.HashMap;
@@ -20,8 +20,8 @@ import java.io.IOException;
 import java.io.*;
 import java.util.List;
 import java.util.StringTokenizer;
-import java.util.function.IntBinaryOperator;
-import java.util.function.Predicate;
+//import java.util.function.IntBinaryOperator;
+//import java.util.function.Predicate;
 import static java.lang.Math.*;
 
 /*****************************************************************************************************************/
@@ -336,7 +336,6 @@ public class Main{
 		return 0;
 	}
 
-
 	public static void main(String[] args) throws Exception{
 //		sieve_of_erantothenes();
 //      Reader s = new Reader();
@@ -352,8 +351,7 @@ public class Main{
 		superOuter:
 		while(Te-- >0) {
 			int n = s.nextInt();
-			return new int[][]{};
-
+			
 
 
 
