@@ -11,6 +11,7 @@
 //import javax.print.attribute.standard.Finishings;
 //import javax.swing.*;
 //import javax.swing.plaf.RootPaneUI;
+import javax.management.ObjectName;
 import java.util.*;
 import java.lang.*;
 import java.util.HashMap;
@@ -350,8 +351,63 @@ public class Main{
 		Te=s.nextInt();
 		superOuter:
 		while(Te-- >0) {
-			int n = s.nextInt();
-			
+			int n = s.nextInt();lists=new ArrayList[n+1];
+			for(int i=0;i<=n;i++){
+				lists[i]=new ArrayList<>();
+			}
+			int[]arr=new int[n+1];
+			for(int i=0;i<n-1;i++){
+				int u=s.nextInt();int v=s.nextInt();
+				lists[u].add(v);lists[v].add(u);
+				arr[u]++;arr[v]++;
+			}
+			PriorityQueue<Integer> pq=new PriorityQueue<>(new Comparator<>() {
+				@Override
+				public int compare(Integer o1, Integer o2) {
+						if(arr[o1]<arr[o2])return 1;
+						else if(arr[o1]<arr[o2])return 0;
+						else return -1;
+
+				}
+			});
+			for(int i=1;i<=n;i++)pq.add(i);
+
+
+
+			int[][]edge=new int[n+1][n+1];
+			int[][]ans=new int[n][n+1];
+			int l=arr[n];
+			for(int i=0;i<l;i++){
+				for(int j=0;j<=n;j++)ans[i][j]=j;
+			}
+			int d=0;
+
+			while (!pq.isEmpty()){
+				int u=pq.poll();
+
+				int z=0;
+				for(Integer e:lists[u]){
+					if(edge[u][e]==1)continue ;
+					dbg.print(u,"  ",e);
+					while (z<l&&(ans[z][u]!=u||ans[z][e]!=e))z++;
+					if(z<l){
+						arr[e]--;
+						pq.remove(e);pq.add(e);
+						arr[u]--;
+						ans[z][e]=u;
+						dbg.print(u,"  ",e,"   z   ",z);
+						edge[u][e]=1;edge[e][u]=1;
+						z++;
+					}
+				}
+				d=max(d,z-1);
+			}
+			System.out.println(l);
+			for(int i=0;i<=d;i++){
+				debugI(ans[i],1);
+				System.out.println();
+			}
+
 
 
 
