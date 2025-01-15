@@ -328,13 +328,13 @@ public class Main{
 			return p - n.p;
 		}}
 	// static class Pair implements Comparable<Pair> { long first;long second;long third;Pair(long first, long second) {this.first = first;this.second = second;}public int compareTo(Pair other) {return Long.compare(this.first, other.first);}}
-	static class pair { int a;int b;long w;pair(int x, int y){this.a=x;this.b=y;}pair(int x, int y, long w){this.a=x;this.b=y;this.w=w;}public int getFirst(){return (int) a;}public int getSecond() {return (int) b;}@Override public String toString(){String str="";str="{ "+a+" "+b+"  "+"  "+w +"}";return str;}}
+	static class pair { int a;int b;long w;int t;pair(int x, int y){this.a=x;this.b=y;}pair(int x, int y, long w){this.a=x;this.b=y;this.w=w;}pair(int x, int y, long w,int t){this.a=x;this.b=y;this.w=w;this.t=t;}public int getFirst(){return (int) a;}public int getSecond() {return (int) b;}@Override public String toString(){String str="";str="{ "+a+" "+b+"  "+"  "+w +"}";return str;}}
 //	public static class Tree<T> extends TreeSet<T> { public Tree() {super();}}
 
-	static long[]vp;static ArrayList<Integer>[]lists;static char[] str,str1;static long[]pre;static int[]arr;static int[]brr;
+	static long[]vp;static ArrayList<pair>[]lists;static char[] str,str1;static long[]pre;static int[]arr;static int[]brr;
 
-	public static long stick(int ind,int n){
-		return 0;
+	public static long stick(int node,int j,int parent,int k){
+     	return 0;
 	}
 
 	public static void main(String[] args) throws Exception{
@@ -351,64 +351,7 @@ public class Main{
 		Te=s.nextInt();
 		superOuter:
 		while(Te-- >0) {
-			int n = s.nextInt();lists=new ArrayList[n+1];
-			for(int i=0;i<=n;i++){
-				lists[i]=new ArrayList<>();
-			}
-			int[]arr=new int[n+1];
-			for(int i=0;i<n-1;i++){
-				int u=s.nextInt();int v=s.nextInt();
-				lists[u].add(v);lists[v].add(u);
-				arr[u]++;arr[v]++;
-			}
-			PriorityQueue<Integer> pq=new PriorityQueue<>(new Comparator<>() {
-				@Override
-				public int compare(Integer o1, Integer o2) {
-						if(arr[o1]<arr[o2])return 1;
-						else if(arr[o1]<arr[o2])return 0;
-						else return -1;
-
-				}
-			});
-			for(int i=1;i<=n;i++)pq.add(i);
-
-
-
-			int[][]edge=new int[n+1][n+1];
-			int[][]ans=new int[n][n+1];
-			int l=arr[n];
-			for(int i=0;i<l;i++){
-				for(int j=0;j<=n;j++)ans[i][j]=j;
-			}
-			int d=0;
-
-			while (!pq.isEmpty()){
-				int u=pq.poll();
-
-				int z=0;
-				for(Integer e:lists[u]){
-					if(edge[u][e]==1)continue ;
-					dbg.print(u,"  ",e);
-					while (z<l&&(ans[z][u]!=u||ans[z][e]!=e))z++;
-					if(z<l){
-						arr[e]--;
-						pq.remove(e);pq.add(e);
-						arr[u]--;
-						ans[z][e]=u;
-						dbg.print(u,"  ",e,"   z   ",z);
-						edge[u][e]=1;edge[e][u]=1;
-						z++;
-					}
-				}
-				d=max(d,z-1);
-			}
-			System.out.println(l);
-			for(int i=0;i<=d;i++){
-				debugI(ans[i],1);
-				System.out.println();
-			}
-
-
+			int n= s.nextInt();
 
 
 
@@ -476,4 +419,3 @@ class MultiTreeSet<E> { TreeMap<E, Integer> freqTreeMap = new TreeMap<E, Integer
 				}
 			})
  */
-
