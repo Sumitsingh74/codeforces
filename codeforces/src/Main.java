@@ -351,7 +351,7 @@ public class Main{
 		Te=s.nextInt();
 		superOuter:
 		while(Te-- >0) {
-			int n= s.nextInt();
+			int n=s.nextInt();
 
 
 
